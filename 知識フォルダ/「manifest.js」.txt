@@ -1,0 +1,35 @@
+【manifest.js】
+
+    manifest.js とは？
+【概要】 
+Sprockets工場に対して**「最終的にどのファイルを公開用として出荷（出力）するか」を指示するリスト（出荷指示書）**です。
+
+【詳細（なぜ必要なのか？）】 
+昔のRailsでは、「Sprockets工場の中にあるファイルは全部出荷する」という大雑把な仕組みでした。
+しかし、それだと「まとめるための部品ファイル」まで個別に出荷されてしまい、無駄が多かったのです。 
+そこでRails 6以降（Sprockets 4以降）から、**「この manifest.js に名前が書かれているものだけを公開用のファイルとしてブラウザに渡す」**という厳密なルールになりました。
+
+
+
+【manifest.js内に「//= link application.css」を追記することについて】
+
+sprockets に対して、ブラウザ公開用に出力するファイルのリストを渡すわけであるが、
+この際、すでに記述されている「//= link_directory ../stylesheets .css」という指示は、
+「stylesheetsフォルダの中にあるCSSを全部出荷対象にする」という意味なので、
+その中にある application.css も自動的に出荷対象に含まれます。 
+
+そのため、「//= link application.css」は記述していなくても問題なく動作します。
+
+
+
+【まとめ】
+Sprockets: CSSなどをブラウザに最適な形に加工してくれる「工場」
+manifest.js: その工場に「これを公開用に出力してね」と伝える「出荷リスト」
+
+・裏で起きていること： 
+    サブフォルダを作ってCSSを分けても、
+    application.css の *= require_tree . が「サブフォルダの中身も全部探して、
+    この application.css 1つにガッチャンコするよ」という仕事をしてくれます。
+
+・manifest.js の役割： 
+    そのガッチャンコして完成した application.css を「出荷」するのが manifest.js です。
