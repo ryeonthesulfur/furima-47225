@@ -48,17 +48,17 @@ Things you may want to cover:
 
 ## items テーブル
 
-| Column           | Type       | Options                        |
-| ---------------- | ---------- | ------------------------------ |
-| name             | string     | null: false                    |
-| description      | text       | null: false                    |
-| category_id      | integer    | null: false                    |
-| condition_id     | integer    | null: false                    |
-| burden_id        | integer    | null: false                    |
-| prefecture_id    | integer    | null: false                    |
-| shipping_days_id | integer    | null: false                    |
-| value            | integer    | null: false                    |
-| user             | references | null: false, foreign_key: true |
+| Column        | Type       | Options                        |
+| ------------- | ---------- | ------------------------------ |
+| name          | string     | null: false                    |
+| description   | text       | null: false                    |
+| category      | integer    | null: false                    |
+| condition     | integer    | null: false                    |
+| burden        | integer    | null: false                    |
+| prefecture    | integer    | null: false                    |
+| shipping_days | integer    | null: false                    |
+| value         | integer    | null: false                    |
+| user          | references | null: false, foreign_key: true |
 
 ### Association
 - belongs_to :user
