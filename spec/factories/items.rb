@@ -2,6 +2,7 @@ FactoryBot.define do
   factory :item do
     item_name { Faker::Lorem.sentence }
     description { Faker::Lorem.sentence }
+    image { Rack::Test::UploadedFile.new(Rails.root.join('spec/fixtures/files/test.png'), 'image/png') }
     category_id { Faker::Number.between(from: 2, to: 11) }
     condition_id { Faker::Number.between(from: 2, to: 7) }
     burden_id { Faker::Number.between(from: 2, to: 3) }
