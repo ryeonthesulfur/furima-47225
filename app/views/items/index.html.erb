@@ -1,7 +1,7 @@
 <%= render "shared/header" %>
 <div class='main'>
 
-  <%# 画面上部の「人生を変えるフリマアプリ」帯部分 %>
+
   <div class='title-contents'>
     <h2 class='service-title'>
       人生を変えるフリマアプリ
@@ -17,9 +17,8 @@
       <%= link_to image_tag("google-play.png", class:"google-btn"), "#" %>
     </div>
   </div>
-  <%# /画面上部の「人生を変えるフリマアプリ」帯部分  %>
 
-  <%# FURIMAが選ばれる3つの理由部分 %>
+
   <div class='select-reason-contents'>
     <h2 class='title'>
       FURIMAが選ばれる3つの理由
@@ -60,9 +59,9 @@
       </li>
     </ul>
   </div>
-  <%# /FURIMAが選ばれる3つの理由部分 %>
 
-  <%# 画面中央の「会員数日本一位」帯部分 %>
+
+
   <div class='ad-contents'>
     <h2 class='ad-title'>
       会員数日本一位
@@ -81,9 +80,8 @@
       <%= link_to image_tag("google-play.png", class:"google-btn"), "#" %>
     </div>
   </div>
-  <%# /画面中央の「会員数日本一位」帯部分 %>
 
-  <%# FURIMAの特徴 %>
+
   <div class='feature-contents'>
     <h2 class='title'>
       FURIMAの特徴
@@ -118,9 +116,8 @@
       </li>
     </ul>
   </div>
-  <%# /FURIMAの特徴 %>
 
-  <%# 商品一覧 %>
+
   <div class='item-contents'>
     <h2 class='title'>ピックアップカテゴリー</h2>
     <div class="subtitle" >
@@ -128,19 +125,16 @@
     </div>
     <ul class='item-lists'>
 
- 
       <% @items.each do |item| %>
       <li class='list'>
         <%= link_to item_path(item.id) do %>
         <div class='item-img-content'>
           <%= image_tag item.image.variant(resize_to_limit: [500, 500]), class: "item-img" if item.image.attached? %>
-  
-          <%# 商品が売れていればsold outを表示しましょう %>
+         <% if item.order.present? %>
           <div class='sold-out'>
-            <span></span>
+            <span>SOLD OUT</span>
           </div>
-          <%# //商品が売れていればsold outを表示しましょう %>
-
+          <% end %>
         </div>
         <div class='item-info'>
           <h3 class='item-name'>
@@ -181,7 +175,7 @@
   </div>
 </div>
 
-<%# 出品ボタン %>
+
 <%= link_to(new_item_path, class: 'purchase-btn') do %>
   <span class='purchase-btn-text'>出品する</span>
   <%= image_tag 'icon_camera.png' , size: '185x50' ,class: "purchase-btn-icon" %>
