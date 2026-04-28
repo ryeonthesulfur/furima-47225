@@ -3,12 +3,10 @@ class OrdersController < ApplicationController
   before_action :move_to_index, only: [:index, :create]
   def index
     gon.public_key = ENV['PAYJP_PUBLIC_KEY']
-    @item = Item.find(params[:item_id])
     @forma = Forma.new
   end
 
   def create
-    @item = Item.find(params[:item_id])
     @forma = Forma.new(forma_params)
     if @forma.valid?
       pay_item

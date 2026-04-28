@@ -25,5 +25,4 @@ class Item < ApplicationRecord
   validates :image, presence: true
 
   has_one :order
-  has_many :addresses, through: :orders
 end
